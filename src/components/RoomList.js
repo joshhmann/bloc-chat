@@ -6,7 +6,6 @@ class RoomList extends Component {
     this.state = {
       room: []
     }
-
     this.roomsRef = this.props.firebase.database().ref('rooms');
   }
 
@@ -16,6 +15,20 @@ class RoomList extends Component {
       room.key = snapshot.key
       this.setState({ rooms: this.state.rooms.concat( room ) });
     });
+  }
+
+  render() {
+    return(
+      <section className='room'>
+        {
+          this.state.rooms.map( (room, key) =>
+            <div key={key} >
+              {room}
+            </div>
+          )
+        }
+        </section>
+    );
   }
 
 }
