@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
@@ -17,6 +16,7 @@ firebase.initializeApp(config);
 
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">

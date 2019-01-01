@@ -4,8 +4,9 @@ class RoomList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      room: []
-    }
+      rooms: []
+    };
+
     this.roomsRef = this.props.firebase.database().ref('rooms');
   }
 
@@ -18,16 +19,12 @@ class RoomList extends Component {
   }
 
   render() {
-    return(
-      <section className='room'>
-        {
-          this.state.rooms.map((room) =>
-              <li key={room.name}
-              </li>
+    const roomList = this.state.rooms.map((room) =>
+      <li key={room.key}>{room.name}</li>
+    );
 
-          )
-        }
-        </section>
+    return(
+      <ul>{roomList}</ul>
     );
   }
 
