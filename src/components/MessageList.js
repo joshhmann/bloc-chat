@@ -10,7 +10,7 @@ class MessageList extends Component {
       roomId: "",
       messages: []
     }
-    this.MessagesRef = this.props.firebase.database().ref('messages');
+    this.messagesRef = this.props.firebase.database().ref('messages');
     this.handleChange = this.handleChange.bind(this);
   }
 
