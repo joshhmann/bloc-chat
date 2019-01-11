@@ -15,20 +15,42 @@ class MessageList extends Component {
   }
 
   handleChange(e) {
-    
+    e.preventDefault();
+    this.setState({
+      username: "user",
+      content: e.target.value,
+      sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+      roomId: this.props.activeRoom
+    });
   }
 
   componentDidMount() {
-    this.roomsRef.on('child_added', snapshot => {
-      const room = snapshot.val();
-      room.key = snapshot.key
-      this.setState({ rooms: this.state.rooms.concat( room ) });
+    this.messagesRef.on('child_added', snapshot => {
+      const message = snapshot.val();
+      message.key = snapshot.key
+      this.setState({ messages: this.state.messages.concat( message ) });
     });
   }
 
   render() {
+    const activeRoom = this.props.activeRoom;
+
+
+    const messageList = (
+      this.state.messages.map((message) => {
+        if(message.roomId === activeRoom) {
+          return <li key={message.key}>{message.content}</li>
+        }
+        return null;
+      })
+    );
+
     return (
-      <div />
+      <div>
+      <div>{messageList}</div>
+      </div>
     );
   }
 }
+
+export default MessageList;
