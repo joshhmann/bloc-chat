@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class RoomList extends Component {
+export class RoomList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ class RoomList extends Component {
   createRoom(e) {
     e.preventDefault();
     this.roomsRef.push({ name: this.state.name});
-    this.setState({ room: ""});
+    this.setState({ name: ""});
   }
 
   componentDidMount() {
