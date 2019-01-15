@@ -27,6 +27,10 @@ class App extends Component {
     this.setState({ activeRoom: room})
   }
 
+  setUser(){
+
+  }
+
   render() {
     const showMessages = this.state.activeRoom;
     return (
