@@ -28,14 +28,13 @@ class MessageList extends Component {
   createMessage(e) {
     e.preventDefault();
     this.messagesRef.push({
-      username: this.props.user ? this.props.user : "Guest",
+      username: this.props.currentUser ? this.props.currentUser : "Guest",
       content: this.state.content,
       sentAt: this.state.sentAt,
       roomId: this.state.roomId
 
     });
     this.setState({username: "", content: "", sentAt: "", roomId: ""});
-    console.log(this.state.username);
   }
 
   componentDidMount() {
